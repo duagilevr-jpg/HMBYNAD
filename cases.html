@@ -45,7 +45,7 @@
     <div class="container hero-grid">
       <div class="hero-copy">
         <span class="eyebrow">Про нас</span>
-        <h1>Простір, де лекало стає <em>точним ремеслом</em></h1>
+        <h1>Простір, де лекало стає<br><em>точним ремеслом</em></h1>
         <p class="lede">HMbyNad, це швейний простір, де конструюють лекала для брендів, шиють індивідуально і навчають будувати власні конструкції.</p>
         <div class="hero-actions">
           <a href="lekala-brands.html" class="btn btn-primary">Лекала для брендів <span class="btn-arrow">→</span></a>
@@ -68,16 +68,6 @@
         <p class="lede reveal" style="max-width:none;">Все почалося з курсів креативного шиття, двох учениць і двох побутових швейних машин в орендованому приміщенні.</p>
         <p class="lede reveal" style="max-width:none;">Сьогодні це простір, де щотижня народжуються нові лекала для брендів, зразки і завершені курси конструювання.</p>
         <p class="lede reveal" style="max-width:none;">Ми не шиємо масові колекції. Кожне лекало, це технічна точність під конкретну задачу, а не здогадка на око.</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="section section-alt">
-    <div class="container">
-      <div class="trust-strip" style="border-top:none;">
-        <div class="trust-item reveal"><span class="trust-num" data-count="4" data-suffix=" роки">0</span><p>Практики в розробці лекал, пошитті й навчанні</p></div>
-        <div class="trust-item reveal"><span class="trust-num" data-count="5" data-suffix=" уроків">0</span><p>У програмі курсу конструювання, від основ до готового макету</p></div>
-        <div class="trust-item reveal"><span class="trust-num">Жіночий одяг</span><p>Єдина спеціалізація, глибока експертиза саме в цьому крої</p></div>
       </div>
     </div>
   </section>
@@ -161,8 +151,20 @@
       </div>
       <div class="form-step" data-step="2">
         <div class="modal-step-label">Крок 2. Виріб</div>
-        <div class="field"><label>Який виріб плануєте?</label><input type="text" name="виріб" data-summary-label="Виріб" placeholder="Наприклад, сукня, спідниця, жакет"></div>
-        <div class="field"><label>Кількість виробів</label><input type="text" name="кількість" data-summary-label="Кількість" placeholder="Один виріб, невелика серія, тираж"></div>
+        <div class="option-grid cols-3" data-field="виріб">
+          <button type="button" class="option-card" data-value="Сукня" data-summary-label="Виріб">Сукня</button>
+          <button type="button" class="option-card" data-value="Спідниця" data-summary-label="Виріб">Спідниця</button>
+          <button type="button" class="option-card" data-value="Брюки" data-summary-label="Виріб">Брюки</button>
+          <button type="button" class="option-card" data-value="Жакет або блуза" data-summary-label="Виріб">Жакет або блуза</button>
+          <button type="button" class="option-card" data-value="Комплект" data-summary-label="Виріб">Комплект</button>
+          <button type="button" class="option-card" data-value="Інше" data-summary-label="Виріб">Інше</button>
+        </div>
+        <div class="modal-step-label" style="margin-top:26px;">Кількість виробів</div>
+        <div class="option-grid cols-3" data-field="кількість">
+          <button type="button" class="option-card" data-value="Один виріб" data-summary-label="Кількість">Один виріб</button>
+          <button type="button" class="option-card" data-value="Невелика серія" data-summary-label="Кількість">Невелика серія</button>
+          <button type="button" class="option-card" data-value="Більший тираж" data-summary-label="Кількість">Більший тираж</button>
+        </div>
       </div>
       <div class="form-step" data-step="3">
         <div class="modal-step-label">Крок 3. Тканина</div>
@@ -173,8 +175,15 @@
       </div>
       <div class="form-step" data-step="4">
         <div class="modal-step-label">Крок 4. Терміни й бюджет</div>
-        <div class="field"><label>Бажані терміни</label><input type="text" name="терміни" data-summary-label="Терміни" placeholder="Наприклад, до 3 тижнів"></div>
-        <div class="field"><label>Орієнтовний бюджет</label><input type="text" name="бюджет" data-summary-label="Бюджет" placeholder="Якщо є рамки, вкажіть діапазон"></div>
+        <div class="option-grid cols-3" data-field="терміни">
+          <button type="button" class="option-card" data-value="До 2 тижнів" data-summary-label="Терміни">До 2 тижнів</button>
+          <button type="button" class="option-card" data-value="До місяця" data-summary-label="Терміни">До місяця</button>
+          <button type="button" class="option-card" data-value="Не горить" data-summary-label="Терміни">Не горить</button>
+        </div>
+        <div class="field" style="margin-top:24px;">
+          <label>Орієнтовний бюджет, якщо є рамки</label>
+          <input type="text" name="бюджет" data-summary-label="Бюджет" placeholder="Необов'язково">
+        </div>
       </div>
       <div class="form-step" data-step="5">
         <div class="modal-step-label">Крок 5. Контакти</div>
@@ -184,13 +193,13 @@
       <div class="modal-nav">
         <button type="button" class="btn btn-back" data-action="back">Назад</button>
         <button type="button" class="btn btn-primary" data-action="next">Далі <span class="btn-arrow">→</span></button>
-        <button type="button" class="btn btn-primary" data-action="submit" style="display:none;">Надіслати в Telegram</button>
+        <button type="button" class="btn btn-primary" data-action="submit" style="display:none;">Надіслати</button>
       </div>
     </form>
     <div class="modal-success">
       <div class="icon-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></div>
       <h3>Дякуємо!</h3>
-      <p>Ми відкрили Telegram із вашим запитом. Надішліть повідомлення, і ми відповімо з розрахунком найближчим часом.</p>
+      <p>Заявку отримано. Ми зв'яжемось із вами найближчим часом з розрахунком.</p>
       <button class="btn btn-outline" data-close-modal>Закрити</button>
     </div>
   </div>

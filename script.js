@@ -123,26 +123,43 @@ document.addEventListener('DOMContentLoaded', () => {
     let current = 0;
     const state = {};
 
-    // build progress dots
+    // build progress dots — only meaningful when there is more than one step
     if (progressWrap) {
-      steps.forEach(() => {
-        const dot = document.createElement('span');
-        progressWrap.appendChild(dot);
-      });
+      if (steps.length > 1) {
+        steps.forEach(() => {
+          const dot = document.createElement('span');
+          progressWrap.appendChild(dot);
+        });
+      } else {
+        progressWrap.classList.add('is-hidden');
+      }
     }
+
+    // a step "requires" a choice if it contains an option-grid for a field with no value yet
+    const stepIsComplete = (stepEl) => {
+      const grids = Array.from(stepEl.querySelectorAll('.option-grid'));
+      return grids.every(grid => !!state[grid.dataset.field]);
+    };
 
     const render = () => {
       steps.forEach((s, i) => s.classList.toggle('is-active', i === current));
-      if (progressWrap) {
+      if (progressWrap && steps.length > 1) {
         Array.from(progressWrap.children).forEach((dot, i) => dot.classList.toggle('is-done', i <= current));
       }
       if (backBtn) backBtn.style.visibility = current === 0 ? 'hidden' : 'visible';
-      if (nextBtn) nextBtn.style.display = current === steps.length - 1 ? 'none' : 'inline-flex';
-      if (submitBtn) submitBtn.style.display = current === steps.length - 1 ? 'inline-flex' : 'none';
+      const onLastStep = current === steps.length - 1;
+      if (nextBtn) nextBtn.style.display = onLastStep ? 'none' : 'inline-flex';
+      if (submitBtn) submitBtn.style.display = onLastStep ? 'inline-flex' : 'none';
+
+      const activeBtn = onLastStep ? submitBtn : nextBtn;
+      if (activeBtn) activeBtn.disabled = !stepIsComplete(steps[current]);
     };
     render();
 
-    if (nextBtn) nextBtn.addEventListener('click', () => { if (current < steps.length - 1) { current++; render(); } });
+    if (nextBtn) nextBtn.addEventListener('click', () => {
+      if (!stepIsComplete(steps[current])) return;
+      if (current < steps.length - 1) { current++; render(); }
+    });
     if (backBtn) backBtn.addEventListener('click', () => { if (current > 0) { current--; render(); } });
 
     // option-card single-select
@@ -153,6 +170,7 @@ document.addEventListener('DOMContentLoaded', () => {
           grid.querySelectorAll('.option-card').forEach(c => c.classList.remove('is-selected'));
           card.classList.add('is-selected');
           state[field] = card.dataset.value;
+          render();
         });
       });
     });
@@ -164,6 +182,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (submitBtn) {
       submitBtn.addEventListener('click', () => {
+        if (!stepIsComplete(steps[current])) return;
+
         const phoneField = form.querySelector('input[name="phone"]');
         if (phoneField && !phoneField.value.trim()) {
           phoneField.focus();
@@ -171,20 +191,9 @@ document.addEventListener('DOMContentLoaded', () => {
           return;
         }
 
-        const lines = [];
-        form.querySelectorAll('[data-summary-label]').forEach(el => {
-          const label = el.dataset.summaryLabel;
-          const key = el.dataset.field || el.name;
-          if (key && state[key]) lines.push(`${label}: ${state[key]}`);
-        });
-        const summary = lines.length ? lines.join('\n') : 'Новий запит з сайту HMbyNad';
-        const tgUrl = `https://t.me/hmbynad?text=${encodeURIComponent(summary)}`;
-
         form.style.display = 'none';
         if (progressWrap) progressWrap.style.display = 'none';
         if (successBox) successBox.classList.add('is-active');
-
-        window.open(tgUrl, '_blank', 'noopener');
       });
     }
   });

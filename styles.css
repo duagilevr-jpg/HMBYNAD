@@ -81,12 +81,12 @@ h1, h2, h3, h4{
   margin: 0;
   letter-spacing: -0.02em;
 }
-h1{ font-size: clamp(2.5rem, 3vw + 1.6rem, 4.9rem); line-height: 1.04; font-weight: 300; }
+h1{ font-size: clamp(2.15rem, 2.3vw + 1.35rem, 4rem); line-height: 1.12; font-weight: 300; }
 h2{ font-size: clamp(1.9rem, 1.6vw + 1.4rem, 3.1rem); line-height: 1.1; font-weight: 300; }
 h3{ font-size: clamp(1.3rem, 0.5vw + 1.15rem, 1.7rem); line-height: 1.25; font-weight: 600; letter-spacing: -0.01em; }
 h4{ font-size: 1.1rem; font-weight: 700; letter-spacing: -0.005em; }
 
-em, .accent{ font-style: normal; color: var(--olive); font-weight: 600; }
+em, .accent{ font-style: normal; color: var(--olive); font-weight: 400; }
 
 .lede{ font-size: clamp(1.02rem, 0.3vw + 0.98rem, 1.2rem); color: var(--ink-soft); line-height: 1.6; max-width: 46ch; font-weight: 400; }
 
@@ -188,14 +188,14 @@ section{ position: relative; }
 .icon-tile svg{ width: 22px; height: 22px; }
 
 /* ---- problem section ---- */
-.problem-list{ display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: var(--radius-md); overflow: hidden; }
+.problem-list{ display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: var(--radius-md); overflow: hidden; }
 .problem-item{ background: var(--paper); padding: 34px 36px; display: flex; gap: 18px; }
 .problem-mark{ flex: none; margin-top: 6px; color: var(--olive); }
 .problem-item p{ color: var(--ink-soft); font-size: 1rem; }
 .problem-item strong{ display: block; color: var(--ink); font-size: 1.05rem; margin-bottom: 6px; font-weight: 700; }
 
 /* ---- pillars / services (2-up) ---- */
-.pillars{ display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+.pillars{ display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 24px; }
 .pillar-card{ background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius-lg); padding: 40px 36px; display: flex; flex-direction: column; gap: 20px; transition: transform 0.4s cubic-bezier(.2,.7,.2,1), box-shadow 0.4s ease, border-color 0.4s ease; }
 .pillar-card:hover{ transform: translateY(-6px); border-color: var(--olive); box-shadow: 0 24px 48px -32px rgba(38,34,24,0.35); }
 .pillar-card h3{ margin-bottom: 2px; }
@@ -206,7 +206,7 @@ section{ position: relative; }
 .pillar-card .btn{ margin-top: auto; align-self: flex-start; }
 
 /* ---- process — stripe layout ---- */
-.process{ display: grid; grid-template-columns: repeat(4, 1fr); gap: 28px; }
+.process{ display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 28px; }
 .process-step{ position: relative; padding-top: 22px; }
 .process-step::before{ content: ''; position: absolute; top: 0; left: 0; height: 3px; width: 100%; background: var(--sage); border-radius: 3px; }
 .process-step:nth-child(2)::before{ background: color-mix(in srgb, var(--sage) 75%, var(--olive)); }
@@ -252,6 +252,12 @@ section{ position: relative; }
 .course-quote p{ font-size: 1.1rem; line-height: 1.5; color: var(--cream); font-weight: 400; }
 .course-quote cite{ display: block; margin-top: 16px; font-style: normal; font-size: 0.82rem; color: var(--sage); }
 
+/* ---- testimonials ---- */
+.testimonial-grid{ display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 20px; }
+.testimonial-card{ background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius-lg); padding: 32px; display: flex; flex-direction: column; gap: 18px; }
+.testimonial-card p{ color: var(--ink-soft); font-size: 1rem; line-height: 1.55; }
+.testimonial-card cite{ font-style: normal; font-size: 0.82rem; font-weight: 700; color: var(--olive); }
+
 /* ---- gift / bonus card ---- */
 .gift-card{ display: grid; grid-template-columns: 0.85fr 1.15fr; gap: 40px; align-items: center; background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius-lg); overflow: hidden; }
 .gift-card .photo{ border-radius: 0; border: none; height: 100%; min-height: 280px; }
@@ -282,7 +288,7 @@ section{ position: relative; }
 .gallery .photo{ break-inside: avoid; margin-bottom: 16px; }
 
 /* ---- contact cards ---- */
-.contact-cards{ display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+.contact-cards{ display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 20px; }
 .contact-card{ background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius-lg); padding: 36px; display: flex; flex-direction: column; gap: 18px; transition: transform 0.35s ease, border-color 0.35s ease; }
 .contact-card:hover{ transform: translateY(-4px); border-color: var(--olive); }
 .contact-card h3{ margin: 0; }
@@ -336,9 +342,10 @@ section{ position: relative; }
 .modal-close{ position: absolute; top: 20px; right: 20px; width: 38px; height: 38px; border-radius: 50%; border: 1px solid var(--line); background: transparent; display: flex; align-items: center; justify-content: center; }
 .modal-close svg{ width: 16px; height: 16px; }
 
-.modal-progress{ display: flex; gap: 6px; margin-bottom: 8px; }
+.modal-progress{ display: flex; gap: 6px; margin: 4px 40px 18px 0; }
 .modal-progress span{ flex: 1; height: 3px; border-radius: 3px; background: var(--line); }
 .modal-progress span.is-done{ background: var(--olive); }
+.modal-progress.is-hidden{ display: none; }
 .modal-step-label{ font-size: 0.76rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--warm-gray); margin: 18px 0 6px; }
 .modal-box h3{ margin-bottom: 24px; }
 
@@ -354,7 +361,7 @@ section{ position: relative; }
 .field textarea{ min-height: 90px; resize: vertical; }
 .field input:focus, .field textarea:focus, .field select:focus{ outline: none; border-color: var(--olive); }
 
-.option-grid{ display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.option-grid{ display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 12px; }
 .option-card{
   border: 1px solid var(--line); border-radius: var(--radius-md); padding: 18px 16px;
   cursor: pointer; text-align: left; background: var(--cream); font-family: inherit;
@@ -364,7 +371,7 @@ section{ position: relative; }
 .option-card:hover{ border-color: var(--olive); }
 .option-card.is-selected{ border-color: var(--olive); background: var(--olive); color: var(--paper); }
 .option-grid.cols-1{ grid-template-columns: 1fr; }
-.option-grid.cols-3{ grid-template-columns: repeat(3, 1fr); }
+.option-grid.cols-3{ grid-template-columns: repeat(3, minmax(0,1fr)); }
 
 .modal-nav{ display: flex; justify-content: space-between; align-items: center; margin-top: 32px; gap: 16px; }
 .modal-nav .btn{ flex: 1; justify-content: center; }
@@ -394,6 +401,7 @@ section{ position: relative; }
   .gift-card .photo{ min-height: 240px; }
   .gallery{ column-count: 2; }
   .contact-cards{ grid-template-columns: 1fr; }
+  .testimonial-grid{ grid-template-columns: 1fr 1fr; }
 }
 
 /* ==========================================================================
@@ -417,6 +425,7 @@ section{ position: relative; }
   .option-grid{ grid-template-columns: 1fr; }
   .option-grid.cols-3{ grid-template-columns: 1fr; }
   .gallery{ column-count: 1; }
+  .testimonial-grid{ grid-template-columns: 1fr; }
 }
 
 /* ---- mobile nav drawer ---- */
