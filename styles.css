@@ -349,13 +349,14 @@ section{ position: relative; }
 .modal-close{ position: static; flex: none; width: 38px; height: 38px; border-radius: 50%; border: 1px solid var(--line); background: transparent; display: flex; align-items: center; justify-content: center; }
 .modal-close svg{ width: 16px; height: 16px; }
 
-.modal-head{ display: flex; align-items: center; gap: 16px; margin-bottom: 26px; }
-.modal-progress{ display: flex; gap: 6px; flex: 1; min-height: 3px; }
+.modal-progress{ display: flex; gap: 6px; margin-bottom: 24px; }
 .modal-progress span{ flex: 1; height: 3px; border-radius: 3px; background: var(--line); }
 .modal-progress span.is-done{ background: var(--olive); }
-.modal-progress.is-hidden{ visibility: hidden; }
+.modal-progress.is-hidden{ display: none; }
+
+.modal-head{ display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 24px; }
+.modal-head h3{ margin: 0; }
 .modal-step-label{ font-size: 0.76rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--warm-gray); margin: 18px 0 6px; }
-.modal-box h3{ margin-bottom: 24px; }
 
 .form-step{ display: none; }
 .form-step.is-active{ display: block; }
