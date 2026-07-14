@@ -350,7 +350,7 @@ section{ position: relative; }
 .modal-close svg{ width: 16px; height: 16px; }
 
 .modal-head{ display: flex; align-items: center; gap: 16px; margin-bottom: 26px; }
-.modal-progress{ display: flex; gap: 6px; flex: 1; }
+.modal-progress{ display: flex; gap: 6px; flex: 1; min-height: 3px; }
 .modal-progress span{ flex: 1; height: 3px; border-radius: 3px; background: var(--line); }
 .modal-progress span.is-done{ background: var(--olive); }
 .modal-progress.is-hidden{ visibility: hidden; }

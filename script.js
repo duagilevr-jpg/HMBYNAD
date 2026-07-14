@@ -174,7 +174,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (progressWrap && steps.length > 1) {
         Array.from(progressWrap.children).forEach((dot, i) => dot.classList.toggle('is-done', i <= current));
       }
-      if (backBtn) backBtn.style.visibility = current === 0 ? 'hidden' : 'visible';
+      if (backBtn) backBtn.style.display = current === 0 ? 'none' : 'inline-flex';
       const onLastStep = current === steps.length - 1;
       if (nextBtn) nextBtn.style.display = onLastStep ? 'none' : 'inline-flex';
       if (submitBtn) submitBtn.style.display = onLastStep ? 'inline-flex' : 'none';
