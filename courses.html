@@ -150,22 +150,22 @@
         <h2>Перш ніж записатись</h2>
       </div>
       <div class="faq-list reveal">
-        <details class="faq-item">
-          <summary>Я ніколи не тримала лекало в руках, це підійде?<span class="faq-plus"></span></summary>
-          <p>Так. Курс побудований з нуля, без потреби у попередньому досвіді.</p>
-        </details>
-        <details class="faq-item">
-          <summary>Онлайн чи офлайн краще обрати?<span class="faq-plus"></span></summary>
-          <p>Обидва формати дають однакову програму. Офлайн проходить у просторі HMbyNad, онлайн, у зручному для вас темпі.</p>
-        </details>
-        <details class="faq-item">
-          <summary>Що лишається після курсу?<span class="faq-plus"></span></summary>
-          <p>Побудовані лекала, готові макети і методика, якою можна користуватись самостійно.</p>
-        </details>
-        <details class="faq-item">
-          <summary>Скільки коштує курс?<span class="faq-plus"></span></summary>
-          <p>Вартість залежить від формату. Залиште заявку, і ми розкажемо деталі та розклад найближчого потоку.</p>
-        </details>
+        <div class="faq-item">
+          <button class="faq-question" type="button"><span>Я ніколи не тримала лекало в руках, це підійде?</span><span class="faq-plus"></span></button>
+          <div class="faq-answer"><div class="faq-answer-inner"><p>Так. Курс побудований з нуля, без потреби у попередньому досвіді.</p></div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" type="button"><span>Онлайн чи офлайн краще обрати?</span><span class="faq-plus"></span></button>
+          <div class="faq-answer"><div class="faq-answer-inner"><p>Обидва формати дають однакову програму. Офлайн проходить у просторі HMbyNad, онлайн, у зручному для вас темпі.</p></div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" type="button"><span>Що лишається після курсу?</span><span class="faq-plus"></span></button>
+          <div class="faq-answer"><div class="faq-answer-inner"><p>Побудовані лекала, готові макети і методика, якою можна користуватись самостійно.</p></div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" type="button"><span>Скільки коштує курс?</span><span class="faq-plus"></span></button>
+          <div class="faq-answer"><div class="faq-answer-inner"><p>Вартість залежить від формату. Залиште заявку, і ми розкажемо деталі та розклад найближчого потоку.</p></div></div>
+        </div>
       </div>
     </div>
   </section>
@@ -220,8 +220,10 @@
 <!-- short single-step signup modal -->
 <div class="modal-overlay" data-modal="course-signup">
   <div class="modal-box">
-    <button class="modal-close" data-close-modal aria-label="Закрити"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M6 6L18 18M18 6L6 18"/></svg></button>
-    <div class="modal-progress"></div>
+    <div class="modal-head">
+      <div class="modal-progress"></div>
+      <button class="modal-close" data-close-modal aria-label="Закрити"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M6 6L18 18M18 6L6 18"/></svg></button>
+    </div>
     <h3>Запис на курс</h3>
     <form data-modal-form>
       <div class="form-step is-active" data-step="1">

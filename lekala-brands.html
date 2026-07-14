@@ -142,26 +142,26 @@
         <h2>Перш ніж написати</h2>
       </div>
       <div class="faq-list reveal">
-        <details class="faq-item">
-          <summary>Скільки коштує розробка лекала?<span class="faq-plus"></span></summary>
-          <p>Вартість залежить від складності виробу, тканини і кількості розмірів у сітці. Заповніть форму, і ми надішлемо орієнтовний розрахунок під ваш запит.</p>
-        </details>
-        <details class="faq-item">
-          <summary>Які терміни виконання?<span class="faq-plus"></span></summary>
-          <p>Узгоджуємо терміни на етапі прорахунку, до старту роботи, щоб ви точно знали, коли отримаєте лекало і зразок.</p>
-        </details>
-        <details class="faq-item">
-          <summary>У мене є лише фото готового виробу, а не власний ескіз. Це підійде?</summary>
-          <p>Так. Достатньо фото, референсу з маркетплейсу або опису словами, ми відтворимо конструкцію і адаптуємо під ваші матеріали.</p>
-        </details>
-        <details class="faq-item">
-          <summary>Чи можна почати з одного зразка перед серією?<span class="faq-plus"></span></summary>
-          <p>Так. Спочатку перевіряємо посадку і якість на одному зразку, і лише потім градуємо на всю розмірну сітку.</p>
-        </details>
-        <details class="faq-item">
-          <summary>Що з правами на лекало?<span class="faq-plus"></span></summary>
-          <p>Лекало розробляється саме під ваш проєкт і передається вам для виробництва. Умови узгоджуємо до початку роботи.</p>
-        </details>
+        <div class="faq-item">
+          <button class="faq-question" type="button"><span>Скільки коштує розробка лекала?</span><span class="faq-plus"></span></button>
+          <div class="faq-answer"><div class="faq-answer-inner"><p>Вартість залежить від складності виробу, тканини і кількості розмірів у сітці. Заповніть форму, і ми надішлемо орієнтовний розрахунок під ваш запит.</p></div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" type="button"><span>Які терміни виконання?</span><span class="faq-plus"></span></button>
+          <div class="faq-answer"><div class="faq-answer-inner"><p>Узгоджуємо терміни на етапі прорахунку, до старту роботи, щоб ви точно знали, коли отримаєте лекало і зразок.</p></div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" type="button"><span>У мене є лише фото готового виробу, а не власний ескіз. Це підійде?</span><span class="faq-plus"></span></button>
+          <div class="faq-answer"><div class="faq-answer-inner"><p>Так. Достатньо фото, референсу з маркетплейсу або опису словами, ми відтворимо конструкцію і адаптуємо під ваші матеріали.</p></div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" type="button"><span>Чи можна почати з одного зразка перед серією?</span><span class="faq-plus"></span></button>
+          <div class="faq-answer"><div class="faq-answer-inner"><p>Так. Спочатку перевіряємо посадку і якість на одному зразку, і лише потім градуємо на всю розмірну сітку.</p></div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" type="button"><span>Що з правами на лекало?</span><span class="faq-plus"></span></button>
+          <div class="faq-answer"><div class="faq-answer-inner"><p>Лекало розробляється саме під ваш проєкт і передається вам для виробництва. Умови узгоджуємо до початку роботи.</p></div></div>
+        </div>
       </div>
     </div>
   </section>
@@ -216,8 +216,10 @@
 
 <div class="modal-overlay" data-modal="calculator">
   <div class="modal-box">
-    <button class="modal-close" data-close-modal aria-label="Закрити"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M6 6L18 18M18 6L6 18"/></svg></button>
-    <div class="modal-progress"></div>
+    <div class="modal-head">
+      <div class="modal-progress"></div>
+      <button class="modal-close" data-close-modal aria-label="Закрити"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M6 6L18 18M18 6L6 18"/></svg></button>
+    </div>
     <h3>Розкажіть про проєкт</h3>
     <form data-modal-form>
       <div class="form-step is-active" data-step="1">

@@ -2,6 +2,13 @@
    HMbyNad — shared behaviour
    ========================================================================== */
 
+// Telegram delivery for form submissions (calculator + course sign-up).
+// NOTE: the token below is visible to anyone who views the page source —
+// that's an inherent limit of sending Telegram messages without a backend.
+// If it ever leaks or gets abused, rotate it with @BotFather (/revoke).
+const TG_BOT_TOKEN = '8767724653:AAFsRxcnpsTtI7EwPZFrN7ZUnumQIyElq3Q';
+const TG_CHAT_ID = '674647485';
+
 document.addEventListener('DOMContentLoaded', () => {
 
   /* ---- header scroll state ---- */
@@ -80,6 +87,27 @@ document.addEventListener('DOMContentLoaded', () => {
       e.preventDefault();
       const y = target.getBoundingClientRect().top + window.scrollY - 88;
       window.scrollTo({ top: y, behavior: 'smooth' });
+    });
+  });
+
+  /* ---- FAQ accordion (smooth, one open at a time) ---- */
+  document.querySelectorAll('.faq-list').forEach(list => {
+    const items = Array.from(list.querySelectorAll('.faq-item'));
+    items.forEach(item => {
+      const btn = item.querySelector('.faq-question');
+      const answer = item.querySelector('.faq-answer');
+      if (!btn || !answer) return;
+      btn.addEventListener('click', () => {
+        const isOpen = item.classList.contains('is-open');
+        items.forEach(other => {
+          other.classList.remove('is-open');
+          other.querySelector('.faq-answer').style.maxHeight = '';
+        });
+        if (!isOpen) {
+          item.classList.add('is-open');
+          answer.style.maxHeight = answer.scrollHeight + 'px';
+        }
+      });
     });
   });
 
@@ -191,9 +219,38 @@ document.addEventListener('DOMContentLoaded', () => {
           return;
         }
 
-        form.style.display = 'none';
-        if (progressWrap) progressWrap.style.display = 'none';
-        if (successBox) successBox.classList.add('is-active');
+        const lines = [];
+        form.querySelectorAll('[data-summary-label]').forEach(el => {
+          const label = el.dataset.summaryLabel;
+          const key = el.dataset.field || el.name;
+          const value = key && state[key];
+          if (value) lines.push(`${label}: ${value}`);
+        });
+        const formTitle = overlay.querySelector('.modal-box h3');
+        const heading = formTitle ? formTitle.textContent : 'Нова заявка';
+        const text = `Сайт HMBYNAD — ${heading}\n${window.location.pathname}\n\n${lines.join('\n')}`;
+
+        const finish = () => {
+          form.style.display = 'none';
+          if (progressWrap) progressWrap.style.display = 'none';
+          if (successBox) successBox.classList.add('is-active');
+        };
+
+        submitBtn.disabled = true;
+        const originalLabel = submitBtn.textContent;
+        submitBtn.textContent = 'Надсилаємо…';
+
+        fetch(`https://api.telegram.org/bot${TG_BOT_TOKEN}/sendMessage`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ chat_id: TG_CHAT_ID, text })
+        })
+          .catch(() => { /* still show success — the lead data isn't lost on the page */ })
+          .finally(() => {
+            submitBtn.textContent = originalLabel;
+            submitBtn.disabled = false;
+            finish();
+          });
       });
     }
   });
